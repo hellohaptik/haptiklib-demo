@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="haptik_sdk_client_id">CLIENT_ID_GIVEN_BY_HAPTIK</string>
+  <string name="haptik_sdk_api_key">API_KEY_GIVEN_BY_HAPTIK</string>
+  <string name="haptik_sdk_base_url">BASE_URL_GIVEN_BY_HAPTIK</string>
+</resources>

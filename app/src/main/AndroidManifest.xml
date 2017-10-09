@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="ai.haptik.android.sample.app">
+
+  <!-- Gcm Custom Permission -->
+  <permission android:name="ai.haptik.android.sample.app.permission.C2D_MESSAGE"
+      android:protectionLevel="signature" />
+
+  <uses-permission android:name="ai.haptik.android.sample.app.permission.C2D_MESSAGE" />
+
+  <uses-permission android:name="android.permission.USE_CREDENTIALS"
+      tools:node="remove" />
+  <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"
+      tools:node="remove" />
+
+  <application android:name=".AppApplication"
+      android:allowBackup="false"
+      android:icon="@mipmap/ic_demo_launcher"
+      android:label="@string/app_name"
+      android:theme="@style/AppTheme"
+      tools:replace="android:allowBackup">
+    <activity android:name=".ClientActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+
+    <!-- you DO NOT have to add this FileProvider in your app unless you already have it for your own usecase -->
+    <!-- It's been added here for demo purpose to validate that there won't be any issue if client app also has this -->
+    <provider android:name="android.support.v4.content.FileProvider"
+        android:authorities="ai.haptik.android.sample.app.fileprovider"
+        android:exported="false"
+        android:grantUriPermissions="true">
+      <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
+          android:resource="@xml/demo_provider_paths" />
+    </provider>
+
+    <meta-data android:name="ai.haptik.android.sdk.ApiKey"
+        android:resource="@string/haptik_sdk_api_key" />
+    <meta-data android:name="ai.haptik.android.sdk.BaseUrl"
+        android:resource="@string/haptik_sdk_base_url" />
+    <meta-data android:name="ai.haptik.android.sdk.ClientId"
+        android:resource="@string/haptik_sdk_client_id" />
+    <meta-data android:name="ai.haptik.android.sdk.NotificationIconSmall"
+        android:resource="@drawable/notification_small" />
+    <meta-data android:name="ai.haptik.android.sdk.NotificationIconLarge"
+        android:resource="@drawable/notification_small" />
+    <meta-data android:name="CLEVERTAP_ACCOUNT_ID"
+        android:value="TEST-RK6-79Z-884Z" />
+    <meta-data android:name="CLEVERTAP_TOKEN"
+        android:value="TEST-1ca-632" />
+
+    <activity android:name=".InboxActivity"
+        android:parentActivityName=".ClientActivity" />
+
+    <activity android:name="ai.haptik.android.sdk.messaging.ChatActivity"
+        android:parentActivityName=".InboxActivity" />
+
+    <!-- GCM Components -->
+
+
+    <!-- GCM's in-house Receiver -->
+    <!-- which handles messages sent from GCM to your application -->
+    <receiver android:name="com.google.android.gms.gcm.GcmReceiver"
+        android:exported="true"
+        android:permission="com.google.android.c2dm.permission.SEND">
+      <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <!-- for Pre Kitkat Devices -->
+        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+        <category android:name="ai.haptik.android.sample.app" />
+      </intent-filter>
+    </receiver>
+
+    <!-- GcmListenerService -->
+    <service android:name=".MyGcmListenerService"
+        android:exported="false">
+      <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+      </intent-filter>
+    </service>
+
+    <!-- Service To update tokens -->
+    <service android:name=".MyInstanceIDListenerService"
+        android:exported="false">
+      <intent-filter>
+        <action android:name="com.google.android.gms.iid.InstanceID" />
+      </intent-filter>
+    </service>
+
+    <!-- Intent Service to get InstanceIdToken atfirst as well as when token refreshes -->
+    <service android:name=".RegistrationIntentService"
+        android:exported="false" />
+
+    <meta-data android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyBC2yhIiop4x5drtrI4FwzDvHjnVWDlwgI" />
+
+  </application>
+
+</manifest>

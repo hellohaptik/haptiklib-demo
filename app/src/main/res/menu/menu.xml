@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/apk/res-auto">
+  <item
+      android:id="@+id/action_add_money"
+      android:title="@string/add_money"
+      tool:showAsAction="always" />
+
+  <item
+      android:id="@+id/action_wallet_history"
+      android:title="@string/show_wallet_history"
+      tool:showAsAction="never" />
+
+  <item
+      android:id="@+id/action_transaction_history"
+      android:title="@string/show_transactions"
+      tool:showAsAction="never" />
+
+  <item
+      android:id="@+id/action_add_address"
+      android:title="@string/menu_add_address"
+      tool:showAsAction="never" />
+
+  <item
+      android:id="@+id/action_print_addresses"
+      android:title="@string/menu_print_address"
+      tool:showAsAction="never" />
+
+  <item
+      android:id="@+id/action_delete_addresses"
+      android:title="@string/menu_delete_addresses"
+      tool:showAsAction="never" />
+
+  <item
+      android:id="@+id/action_logout"
+      android:title="@string/menu_logout"
+      tool:showAsAction="never" />
+
+</menu>
