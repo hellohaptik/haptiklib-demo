@@ -5,8 +5,8 @@
   <string name="show_wallet_history">Wallet History</string>
   <string name="show_transactions">Get Transactions</string>
   <string name="menu_add_address">Add an Address</string>
-  <string name="menu_print_address">Print Addresses</string>
   <string name="menu_delete_addresses">Delete Addresses</string>
+  <string name="menu_toggle_banner_visibility">Toggle Banners display</string>
   <string name="unread_count">Unread Chats : %d</string>
   <string name="menu_logout">Logout</string>
   <string name="client_screen_message">This page imitates potential main screen of client app</string>

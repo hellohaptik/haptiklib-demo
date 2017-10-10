@@ -96,18 +96,9 @@ public class InboxActivity extends AppCompatActivity {
             case R.id.action_delete_addresses:
                 deleteAllSavedAddresses();
                 break;
-            case R.id.action_print_addresses:
-                AddressHelper.getAddressesAsync(new Callback<List<Address>>() {
-                    @Override
-                    public void success(List<Address> result) {
-                        System.out.println(result);
-                    }
-
-                    @Override
-                    public void failure(HaptikException exception) {
-
-                    }
-                });
+            case R.id.action_toggle_banner_visibility:
+                boolean isBannerVisible = view_inbox.isBannerVisible();
+                view_inbox.setBannerVisibility(!isBannerVisible);
                 break;
         }
         return true;

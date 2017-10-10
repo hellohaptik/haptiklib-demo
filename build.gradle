@@ -16,7 +16,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        // ADD MAVEN URL FOR TIL SDK - Ask Haptik about it or look into Integration Document
+        // ADD MAVEN URL FOR TIL & PhonePe SDK - Ask Haptik about it or look into Integration Document
     }
 }
 

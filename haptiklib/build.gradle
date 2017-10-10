@@ -1,2 +1,2 @@
 configurations.maybeCreate("default")
-artifacts.add("default", file('haptikLib-2.6.0_26136.aar'))
+artifacts.add("default", file('haptiklib-2.9.0-29144.aar'))

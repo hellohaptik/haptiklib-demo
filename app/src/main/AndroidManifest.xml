@@ -99,6 +99,11 @@
     <meta-data android:name="com.google.android.geo.API_KEY"
         android:value="AIzaSyBC2yhIiop4x5drtrI4FwzDvHjnVWDlwgI" />
 
+    <!-- Ask Haptik to provide ID -->
+    <meta-data
+        android:name="com.phonepe.android.sdk.AppId"
+        android:value="ID" />
+
   </application>
 
 </manifest>
