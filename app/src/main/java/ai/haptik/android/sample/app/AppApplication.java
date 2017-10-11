@@ -1,6 +1,7 @@
 package ai.haptik.android.sample.app;
 
 import ai.haptik.android.sdk.HaptikLib;
+import ai.haptik.android.sdk.cab.CabApiFactory;
 import android.app.Application;
 
 public class AppApplication extends Application {
@@ -14,6 +15,7 @@ public class AppApplication extends Application {
         }
         HaptikLib.setRunEnvironment(HaptikLib.RUN_ENVIRONMENT_STAGING);
         HaptikLib.init(this);
+        HaptikLib.setApis(CabApiFactory.getCabApi());
         HaptikLib.setClientMainActivityClass(ClientActivity.class);
     }
 }

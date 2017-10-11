@@ -1,1 +1,1 @@
-include ':app', ':haptiklib', ':PayWithAmazon'
+include ':app', ':PayWithAmazon'
