@@ -80,7 +80,7 @@ public class ClientActivity extends AppCompatActivity {
         // In this demo app, it's initialized in the application class itself, so it would be always initialized here but we have just
         // kept it here for those cases where client app is not initializing the library in application class
         if (!HaptikLib.isInitialized()) {
-            HaptikLib.init(getApplication());
+            HaptikLib.init(Utils.getHaptikInitData(getApplication()));
         }
         // Check if haptik's initial data has been sync once or not.
         // It's important to sync the initial data once before doing anything because otherwise sdk won't have any data to show on inbox

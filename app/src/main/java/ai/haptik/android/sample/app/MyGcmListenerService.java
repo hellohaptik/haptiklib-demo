@@ -12,7 +12,7 @@ public class MyGcmListenerService extends GcmListenerService {
         super.onMessageReceived(s, bundle);
         if (NotificationManager.isHaptikNotification(bundle)) {
             if (!HaptikLib.isInitialized()) {
-                HaptikLib.init(getApplication());
+                HaptikLib.init(Utils.getHaptikInitData(getApplication()));
             }
             NotificationManager.handleNotification(getApplicationContext(), bundle);
         }

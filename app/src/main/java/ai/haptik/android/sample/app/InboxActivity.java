@@ -46,7 +46,7 @@ public class InboxActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (!HaptikLib.isInitialized()) {
-            HaptikLib.init(getApplication());
+            HaptikLib.init(Utils.getHaptikInitData(getApplication()));
         }
         setContentView(R.layout.activity_inbox);
         view_inbox = (InboxView) findViewById(R.id.inbox);

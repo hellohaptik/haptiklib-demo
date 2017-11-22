@@ -14,8 +14,6 @@ public class AppApplication extends Application {
             HaptikLib.setDebugEnabled(true);
         }
         HaptikLib.setRunEnvironment(HaptikLib.RUN_ENVIRONMENT_STAGING);
-        HaptikLib.init(this);
-        HaptikLib.setApis(CabApiFactory.getCabApi());
-        HaptikLib.setClientMainActivityClass(ClientActivity.class);
+        HaptikLib.init(Utils.getHaptikInitData(this));
     }
 }

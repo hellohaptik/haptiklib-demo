@@ -51,7 +51,8 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'ai.haptik.android.sdk:haptiklib-cab:2.10.0-30146'
+    compile 'ai.haptik.android.sdk:haptiklib-cab:3.0.0-30151'
+    compile "ai.haptik.android.sdk:haptiklib-payment:3.0.0-30151"
     compile "com.google.android.gms:play-services-gcm:${google_play_services_client_library_version}"
     compile project(':PayWithAmazon')
 }
