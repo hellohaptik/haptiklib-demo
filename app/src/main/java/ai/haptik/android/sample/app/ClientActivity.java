@@ -74,7 +74,7 @@ public class ClientActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    private void launchInbox() {
+    void launchInbox() {
         // Check if Haptik is initialized or not. If not initialized then initialize it before doing anything
         // Haptik would  be initialized if you init once, went into inbox, and come back. Then user press the haptik button again
         // In this demo app, it's initialized in the application class itself, so it would be always initialized here but we have just
@@ -109,7 +109,7 @@ public class ClientActivity extends AppCompatActivity {
     // Check if user is already logged in or not
     // if Logged in then open inbox
     // if not logged then go through signUp flow
-    private void onHaptikDataSyncOnce() {
+    void onHaptikDataSyncOnce() {
         if (HaptikLib.isUserLoggedIn()) {
             toggleUiState(false);
             goToInbox();
@@ -147,12 +147,12 @@ public class ClientActivity extends AppCompatActivity {
         });
     }
 
-    private void goToInbox() {
+    void goToInbox() {
         Intent intent = new Intent(ClientActivity.this, InboxActivity.class);
         startActivity(intent);
     }
 
-    private void toggleUiState(boolean handling) {
+    void toggleUiState(boolean handling) {
         button_launchHaptik.setClickable(!handling);
         button_launchHaptik.setEnabled(!handling);
         pb_launchHaptik.setVisibility(handling ? View.VISIBLE : View.GONE);

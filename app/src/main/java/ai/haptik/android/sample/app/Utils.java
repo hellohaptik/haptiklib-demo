@@ -19,9 +19,10 @@ public class Utils {
     public static InitData getHaptikInitData(Application application) {
         return new InitData.Builder(application)
             .clientMainActivityClass(InboxActivity.class)
-            .apiOptions(CabApiFactory.getCabApi())
-            .apiOptions(PaymentApiFactory.getPaymentApi())
+            .apiOptions(CabApiFactory.getCabApi()) // Optional - only needed if using cabs SDK
+            .apiOptions(PaymentApiFactory.getPaymentApi()) // Optional - only needed if using payments SDK
             .debugEnabled(BuildConfig.DEBUG)
+            .notificationSound(R.raw.notification_sound) // Optional - only use if you want any non-default sound for haptik notification
             .build();
     }
 }

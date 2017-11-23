@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tool="http://schemas.android.com/apk/res-auto">
+    xmlns:tool="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools">
+
+  <item
+      android:id="@+id/action_haptik_offers"
+      android:actionLayout="@layout/view_offers_menu_item"
+      android:title="@string/haptik_offers"
+      app:actionLayout="@layout/view_offers_menu_item"
+      tool:showAsAction="always" />
+
   <item
       android:id="@+id/action_add_money"
       android:title="@string/add_money"
@@ -9,6 +18,11 @@
   <item
       android:id="@+id/action_wallet_history"
       android:title="@string/show_wallet_history"
+      tool:showAsAction="never" />
+
+  <item
+      android:id="@+id/action_saved_cards"
+      android:title="@string/show_saved_cards"
       tool:showAsAction="never" />
 
   <item

@@ -10,9 +10,6 @@ public class AppApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        if (BuildConfig.DEBUG) {
-            HaptikLib.setDebugEnabled(true);
-        }
         HaptikLib.setRunEnvironment(HaptikLib.RUN_ENVIRONMENT_STAGING);
         HaptikLib.init(Utils.getHaptikInitData(this));
     }

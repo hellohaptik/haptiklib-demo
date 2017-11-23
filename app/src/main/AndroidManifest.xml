@@ -59,6 +59,10 @@
     <activity android:name="ai.haptik.android.sdk.messaging.ChatActivity"
         android:parentActivityName=".InboxActivity" />
 
+    <activity android:name=".SavedCardActivity"
+        android:label="Saved Cards"
+        android:parentActivityName=".InboxActivity" />
+
     <!-- GCM Components -->
 
 
@@ -92,7 +96,7 @@
       </intent-filter>
     </service>
 
-    <!-- Intent Service to get InstanceIdToken atfirst as well as when token refreshes -->
+    <!-- Intent Service to get InstanceIdToken at first as well as when token refreshes -->
     <service android:name=".RegistrationIntentService"
         android:exported="false" />
 
