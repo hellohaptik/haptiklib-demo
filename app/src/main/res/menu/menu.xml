@@ -11,8 +11,8 @@
       tool:showAsAction="always" />
 
   <item
-      android:id="@+id/action_add_money"
-      android:title="@string/add_money"
+      android:id="@+id/action_show_wallet"
+      android:title="@string/show_wallet"
       tool:showAsAction="always" />
 
   <item

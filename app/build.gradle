@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
 
     signingConfigs {
         debug {
@@ -13,7 +13,7 @@ android {
     defaultConfig {
         applicationId "ai.haptik.android.sample.app"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -52,8 +52,8 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'ai.haptik.android.sdk:haptiklib-cab:3.2.0-32159'
-    compile 'ai.haptik.android.sdk:haptiklib-payment:3.2.0-32159'
+    compile 'ai.haptik.android.sdk:haptiklib-cab:3.3.0-33164'
+    compile 'ai.haptik.android.sdk:haptiklib-payment:3.3.0-33164'
     compile "com.google.android.gms:play-services-gcm:${google_play_services_client_library_version}"
     compile project(':PayWithAmazon')
 }

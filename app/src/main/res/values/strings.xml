@@ -1,7 +1,7 @@
 <resources>
   <string name="app_name">Haptik SDK Demo</string>
   <string name="show_saved_cards">Show Saved Cards</string>
-  <string name="add_money">Add Money</string>
+  <string name="show_wallet">Show Wallet</string>
   <string name="show_wallet_history">Wallet History</string>
   <string name="show_transactions">Get Transactions</string>
   <string name="menu_add_address">Add an Address</string>
