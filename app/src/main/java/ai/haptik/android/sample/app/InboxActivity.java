@@ -37,12 +37,12 @@ public class InboxActivity extends AppCompatActivity {
     private FrameLayout fl_offersCountBg;
     private TextView tv_offersCount;
     private InboxView view_inbox;
-    private MenuItem addMoneyMenuItem;
+    private MenuItem showWalletMenuItem;
 
     private BroadcastReceiver walletReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            updateAddMoneyMenuItem();
+            updateShowWalletMenuItem();
         }
     };
 
@@ -67,10 +67,10 @@ public class InboxActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu, menu);
-        addMoneyMenuItem = menu.findItem(R.id.action_add_money);
+        showWalletMenuItem = menu.findItem(R.id.action_show_wallet);
         MenuItem menuItem = menu.findItem(R.id.action_haptik_offers);
         menuItem.setActionView(R.layout.view_offers_menu_item);
-        updateAddMoneyMenuItem();
+        updateShowWalletMenuItem();
         return true;
     }
 
@@ -96,8 +96,8 @@ public class InboxActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = null;
         switch (item.getItemId()) {
-            case R.id.action_add_money:
-                Router.addMoneyToWallet(this);
+            case R.id.action_show_wallet:
+                Router.showWallet(this);
                 break;
             case R.id.action_wallet_history:
                 Router.showWalletHistory(this);
@@ -182,7 +182,7 @@ public class InboxActivity extends AppCompatActivity {
         super.onResume();
         view_inbox.onResume();
         // Update latest wallet balance on menu UI
-        updateAddMoneyMenuItem();
+        updateShowWalletMenuItem();
         updateOffersMenuItem();
 
         // Register broadcast receiver for wallet balance update
@@ -209,17 +209,17 @@ public class InboxActivity extends AppCompatActivity {
     }
 
     // Update title of the menu item which current wallet balance in brackets
-    void updateAddMoneyMenuItem() {
-        if (addMoneyMenuItem != null) {
+    void updateShowWalletMenuItem() {
+        if (showWalletMenuItem != null) {
             if (HaptikLib.isWalletCreated()) {
-                addMoneyMenuItem.setVisible(true);
+                showWalletMenuItem.setVisible(true);
                 if (HaptikLib.isWalletInformationAvailable()) {
-                    addMoneyMenuItem.setTitle("\u20B9" + HaptikLib.getWalletBalance());
+                    showWalletMenuItem.setTitle("\u20B9" + HaptikLib.getWalletBalance());
                 } else if (HaptikLib.isSmartWalletDown()) {
-                    addMoneyMenuItem.setTitle("\u20B9 --");
+                    showWalletMenuItem.setTitle("\u20B9 --");
                 }
             } else {
-                addMoneyMenuItem.setVisible(false);
+                showWalletMenuItem.setVisible(false);
             }
         }
     }
