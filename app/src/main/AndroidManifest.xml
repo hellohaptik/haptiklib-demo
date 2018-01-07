@@ -3,12 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="ai.haptik.android.sample.app">
 
-  <!-- Gcm Custom Permission -->
-  <permission android:name="ai.haptik.android.sample.app.permission.C2D_MESSAGE"
-      android:protectionLevel="signature" />
-
-  <uses-permission android:name="ai.haptik.android.sample.app.permission.C2D_MESSAGE" />
-
   <uses-permission android:name="android.permission.USE_CREDENTIALS"
       tools:node="remove" />
   <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"
@@ -63,42 +57,20 @@
         android:label="Saved Cards"
         android:parentActivityName=".InboxActivity" />
 
-    <!-- GCM Components -->
-
-
-    <!-- GCM's in-house Receiver -->
-    <!-- which handles messages sent from GCM to your application -->
-    <receiver android:name="com.google.android.gms.gcm.GcmReceiver"
-        android:exported="true"
-        android:permission="com.google.android.c2dm.permission.SEND">
-      <intent-filter>
-        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-        <!-- for Pre Kitkat Devices -->
-        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-
-        <category android:name="ai.haptik.android.sample.app" />
-      </intent-filter>
-    </receiver>
-
-    <!-- GcmListenerService -->
-    <service android:name=".MyGcmListenerService"
+    <service android:name=".MyFirebaseMessagingService"
         android:exported="false">
       <intent-filter>
-        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <action android:name="com.google.firebase.MESSAGING_EVENT" />
       </intent-filter>
     </service>
 
     <!-- Service To update tokens -->
-    <service android:name=".MyInstanceIDListenerService"
-        android:exported="false">
+    <service android:name=".MyFirebaseInstanceIDService">
       <intent-filter>
-        <action android:name="com.google.android.gms.iid.InstanceID" />
+        <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
       </intent-filter>
     </service>
 
-    <!-- Intent Service to get InstanceIdToken at first as well as when token refreshes -->
-    <service android:name=".RegistrationIntentService"
-        android:exported="false" />
 
     <meta-data android:name="com.google.android.geo.API_KEY"
         android:value="AIzaSyBC2yhIiop4x5drtrI4FwzDvHjnVWDlwgI" />

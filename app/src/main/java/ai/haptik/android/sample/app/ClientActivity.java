@@ -35,11 +35,6 @@ public class ClientActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (checkPlayServices()) {
-            // Start IntentService to register this application with GCM.
-            Intent intent = new Intent(this, RegistrationIntentService.class);
-            startService(intent);
-        }
         setContentView(R.layout.activity_client);
         button_launchHaptik = (Button) findViewById(R.id.btn_launch_haptik);
         pb_launchHaptik = (ProgressBar) findViewById(R.id.pb_launch_haptik);
