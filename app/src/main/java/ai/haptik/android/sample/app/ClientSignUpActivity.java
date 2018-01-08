@@ -12,38 +12,22 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class ClientSignUpActivity extends AppCompatActivity {
-
-    private static final String TAG = "ClientSignUpActivity";
-    private Button button_launchHaptik;
-    ProgressBar pb_launchHaptik;
-    private HaptikSignupProgessView hpv_progressView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_signup);
-        button_launchHaptik = findViewById(R.id.btn_launch_haptik);
-        pb_launchHaptik = findViewById(R.id.pb_launch_haptik);
-        hpv_progressView = findViewById(R.id.hpv_progress);
 
-        button_launchHaptik.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toggleUiState(true);
-                performHaptikSyncAndLaunch();
-            }
-        });
+        HaptikSignupProgessView hpv_progressView = findViewById(R.id.hpv_progress);
+        hpv_progressView.show();
+        performHaptikSyncAndLaunch();
     }
 
 
-   void performHaptikSyncAndLaunch() {
-        hpv_progressView.show();
+    void performHaptikSyncAndLaunch() {
         // Check if Haptik is initialized or not. If not initialized then initialize it before doing anything
         // Haptik would  be initialized if you init once, went into inbox, and come back. Then user press the haptik button again
         // In this demo app, it's initialized in the application class itself, so it would be always initialized here but we have just
@@ -65,10 +49,9 @@ public class ClientSignUpActivity extends AppCompatActivity {
 
                 @Override
                 public void failure(HaptikException exception) {
-                    toggleUiState(false);
                     // Handle Failure - If this fails then you cannot start Haptik. May call performInitialDataSync again
                     Toast.makeText(ClientSignUpActivity.this, "Haptik Init Data Sync Failed.\nCan't move ahead!", Toast.LENGTH_SHORT).show();
-                    hpv_progressView.hide();
+                    finish();
                 }
             });
         } else {
@@ -81,7 +64,6 @@ public class ClientSignUpActivity extends AppCompatActivity {
     // if not logged then go through signUp flow
     void onHaptikDataSyncOnce() {
         if (HaptikLib.isUserLoggedIn()) {
-            toggleUiState(false);
             goToInbox();
         } else {
             performSignUp();
@@ -103,11 +85,10 @@ public class ClientSignUpActivity extends AppCompatActivity {
 
             @Override
             public void failure(HaptikException exception) {
-                toggleUiState(false);
                 Toast.makeText(ClientSignUpActivity.this, "SignUp failure", Toast.LENGTH_SHORT).show();
                 // Handle SignUp failure, Haptik/inbox must not be opened
                 exception.printStackTrace();
-                hpv_progressView.hide();
+                finish();
             }
         });
     }
@@ -116,12 +97,6 @@ public class ClientSignUpActivity extends AppCompatActivity {
         Intent intent = new Intent(ClientSignUpActivity.this, InboxActivity.class);
         startActivity(intent);
         finish();
-    }
-
-    void toggleUiState(boolean handling) {
-        button_launchHaptik.setClickable(!handling);
-        button_launchHaptik.setEnabled(!handling);
-        pb_launchHaptik.setVisibility(handling ? View.VISIBLE : View.GONE);
     }
 
     private boolean hasHaptikInitialDataSyncDone() {

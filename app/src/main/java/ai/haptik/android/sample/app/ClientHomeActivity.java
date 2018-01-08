@@ -16,7 +16,6 @@ import android.widget.Button;
 public class ClientHomeActivity extends AppCompatActivity {
 
     private Button button_launchHaptik;
-    private Button button_launchSignUp;
     private MenuItem unreadMessageCountMenuItem;
     int totalUnreadMessages;
 
@@ -26,22 +25,16 @@ public class ClientHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_home);
-
         button_launchHaptik = findViewById(R.id.btn_launch_haptik);
-        button_launchSignUp = findViewById(R.id.btn_launch_signup);
 
         button_launchHaptik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ClientHomeActivity.this, InboxActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        button_launchSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ClientHomeActivity.this, ClientSignUpActivity.class));
+                if (HaptikLib.isUserLoggedIn()) {
+                    startActivity(new Intent(ClientHomeActivity.this, InboxActivity.class));
+                } else {
+                    startActivity(new Intent(ClientHomeActivity.this, ClientSignUpActivity.class));
+                }
             }
         });
 
@@ -58,20 +51,15 @@ public class ClientHomeActivity extends AppCompatActivity {
                 updateUnreadMessageCount();
             }
         });
-        if (!HaptikLib.isInitialized()) {
-            HaptikLib.init(Utils.getHaptikInitData(getApplication()));
-        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         if (HaptikLib.isUserLoggedIn()) {
-            button_launchSignUp.setVisibility(View.GONE);
-            button_launchHaptik.setVisibility(View.VISIBLE);
+            button_launchHaptik.setText(getString(R.string.launch_haptik));
         } else {
-            button_launchSignUp.setVisibility(View.VISIBLE);
-            button_launchHaptik.setVisibility(View.GONE);
+            button_launchHaptik.setText(getString(R.string.launch_signup));
         }
     }
 
