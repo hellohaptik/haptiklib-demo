@@ -4,72 +4,46 @@ import ai.haptik.android.sdk.Callback;
 import ai.haptik.android.sdk.HaptikException;
 import ai.haptik.android.sdk.HaptikLib;
 import ai.haptik.android.sdk.SignUpData;
-import ai.haptik.android.sdk.data.api.model.Task;
 import ai.haptik.android.sdk.data.model.User;
-import ai.haptik.android.sdk.messaging.MessagingClient;
-import ai.haptik.android.sdk.messaging.MessagingEventListener;
+import ai.haptik.android.sdk.widget.HaptikSignupProgessView;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
 
-public class ClientActivity extends AppCompatActivity {
+public class ClientSignUpActivity extends AppCompatActivity {
 
-    private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 99;
-    private static final String TAG = "ClientActivity";
+    private static final String TAG = "ClientSignUpActivity";
     private Button button_launchHaptik;
     ProgressBar pb_launchHaptik;
-    private MenuItem unreadMessageCountMenuItem;
-    int totalUnreadMessages;
+    private HaptikSignupProgessView hpv_progressView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_client);
-        button_launchHaptik = (Button) findViewById(R.id.btn_launch_haptik);
-        pb_launchHaptik = (ProgressBar) findViewById(R.id.pb_launch_haptik);
+        setContentView(R.layout.activity_client_signup);
+        button_launchHaptik = findViewById(R.id.btn_launch_haptik);
+        pb_launchHaptik = findViewById(R.id.pb_launch_haptik);
+        hpv_progressView = findViewById(R.id.hpv_progress);
+
         button_launchHaptik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toggleUiState(true);
-                launchInbox();
-            }
-        });
-
-        MessagingClient.getInstance().setMessagingEventListener(new MessagingEventListener() {
-            @Override
-            public void onTaskBoxItemClicked(Task task) {
-                Log.d(TAG, "Task Clicked --> " + task.getMessage());
-            }
-
-            @Override
-            public void onUnreadMessageCountChanged(int unreadMessageCount) {
-                Log.d(TAG, "Unread Message --> " + unreadMessageCount);
-                totalUnreadMessages = unreadMessageCount;
-                updateUnreadMessageCount();
+                performHaptikSyncAndLaunch();
             }
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.client_menu, menu);
-        unreadMessageCountMenuItem = menu.findItem(R.id.unread_chats_count);
-        updateUnreadMessageCount();
-        return super.onCreateOptionsMenu(menu);
-    }
 
-    void launchInbox() {
+   void performHaptikSyncAndLaunch() {
+        hpv_progressView.show();
         // Check if Haptik is initialized or not. If not initialized then initialize it before doing anything
         // Haptik would  be initialized if you init once, went into inbox, and come back. Then user press the haptik button again
         // In this demo app, it's initialized in the application class itself, so it would be always initialized here but we have just
@@ -85,7 +59,7 @@ public class ClientActivity extends AppCompatActivity {
                 @Override
                 public void success(Boolean result) {
                     // On Success - set the flag to true so that we don't call this method in next app launch
-                    Utils.setHaptikInitialDataSyncDone(ClientActivity.this, true);
+                    Utils.setHaptikInitialDataSyncDone(ClientSignUpActivity.this, true);
                     onHaptikDataSyncOnce();
                 }
 
@@ -93,7 +67,8 @@ public class ClientActivity extends AppCompatActivity {
                 public void failure(HaptikException exception) {
                     toggleUiState(false);
                     // Handle Failure - If this fails then you cannot start Haptik. May call performInitialDataSync again
-                    Toast.makeText(ClientActivity.this, "Haptik Init Data Sync Failed.\nCan't move ahead!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ClientSignUpActivity.this, "Haptik Init Data Sync Failed.\nCan't move ahead!", Toast.LENGTH_SHORT).show();
+                    hpv_progressView.hide();
                 }
             });
         } else {
@@ -114,20 +89,14 @@ public class ClientActivity extends AppCompatActivity {
     }
 
     private void performSignUp() {
-        SignUpData signUpData = new SignUpData.Builder(SignUpData.AUTH_TYPE_OTP)
-            .userFullName("HaptikLib Client User")
-            .userEmail("demo@demo.com")
-            .userPhone("1234567890")
-            .userCity("Mumbai")
-            .authToken("454af59c6c29435cb5e5aa0cada12345")
-            .shouldUseSmartWallet(true)
+        SignUpData signUpData = new SignUpData
+            .Builder(SignUpData.AUTH_TYPE_BASIC)
             .build();
 
         HaptikLib.signUp(signUpData, new Callback<User>() {
             @Override
             public void success(User result) {
-                toggleUiState(false);
-                Toast.makeText(ClientActivity.this, "SignUp success", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ClientSignUpActivity.this, "SignUp success", Toast.LENGTH_SHORT).show();
                 // On SignUp success, open inbox activity
                 goToInbox();
             }
@@ -135,16 +104,18 @@ public class ClientActivity extends AppCompatActivity {
             @Override
             public void failure(HaptikException exception) {
                 toggleUiState(false);
-                Toast.makeText(ClientActivity.this, "SignUp failure", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ClientSignUpActivity.this, "SignUp failure", Toast.LENGTH_SHORT).show();
                 // Handle SignUp failure, Haptik/inbox must not be opened
                 exception.printStackTrace();
+                hpv_progressView.hide();
             }
         });
     }
 
     void goToInbox() {
-        Intent intent = new Intent(ClientActivity.this, InboxActivity.class);
+        Intent intent = new Intent(ClientSignUpActivity.this, InboxActivity.class);
         startActivity(intent);
+        finish();
     }
 
     void toggleUiState(boolean handling) {
@@ -156,32 +127,5 @@ public class ClientActivity extends AppCompatActivity {
     private boolean hasHaptikInitialDataSyncDone() {
         SharedPreferences sharedPreferences = getSharedPreferences(Utils.PREFERENCES_FILE_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getBoolean(Utils.PREFS_KEY_HAPTIK_DATA_SYNC_ONCE, false);
-    }
-
-    /**
-     * Check the device to make sure it has the Google Play Services APK. If
-     * it doesn't, display a dialog that allows users to download the APK from
-     * the Google Play Store or enable it in the device's system settings.
-     */
-    private boolean checkPlayServices() {
-        GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
-        int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
-        if (resultCode != ConnectionResult.SUCCESS) {
-            if (apiAvailability.isUserResolvableError(resultCode)) {
-                apiAvailability.getErrorDialog(this, resultCode, PLAY_SERVICES_RESOLUTION_REQUEST)
-                    .show();
-            } else {
-                Log.i(TAG, "This device is not supported.");
-                finish();
-            }
-            return false;
-        }
-        return true;
-    }
-
-    void updateUnreadMessageCount() {
-        if (unreadMessageCountMenuItem != null) {
-            unreadMessageCountMenuItem.setTitle(getString(R.string.unread_count, totalUnreadMessages));
-        }
     }
 }

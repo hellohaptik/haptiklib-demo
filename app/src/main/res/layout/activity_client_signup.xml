@@ -3,16 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ai.haptik.android.sample.app.ClientActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-  <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="48dp"
-      android:gravity="center"
-      android:padding="16dp"
-      android:text="@string/client_screen_message"
-      android:textSize="24sp" />
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="@string/client_signup_screen_message"
+        android:textSize="24sp" />
 
   <Button
       android:id="@+id/btn_launch_haptik"
@@ -26,11 +27,19 @@
 
   <ProgressBar
       android:id="@+id/pb_launch_haptik"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
+      android:layout_width="36dp"
+      android:layout_height="36dp"
       android:layout_above="@id/btn_launch_haptik"
       android:layout_marginBottom="24dp"
+      android:layout_centerHorizontal="true"
       android:visibility="gone"
       tools:visibility="visible" />
+
+  <ai.haptik.android.sdk.widget.HaptikSignupProgessView
+      android:id="@+id/hpv_progress"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@android:color/white"
+      android:visibility="gone" />
 
 </RelativeLayout>

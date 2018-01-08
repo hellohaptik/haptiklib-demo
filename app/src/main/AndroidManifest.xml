@@ -14,7 +14,9 @@
       android:label="@string/app_name"
       android:theme="@style/AppTheme"
       tools:replace="android:allowBackup">
-    <activity android:name=".ClientActivity">
+    <activity android:name=".ClientSignUpActivity" android:label="@string/signup_screen" />
+
+    <activity android:name=".ClientHomeActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
@@ -48,7 +50,7 @@
         android:value="TEST-1ca-632" />
 
     <activity android:name=".InboxActivity"
-        android:parentActivityName=".ClientActivity" />
+        android:parentActivityName=".ClientHomeActivity" />
 
     <activity android:name="ai.haptik.android.sdk.messaging.ChatActivity"
         android:parentActivityName=".InboxActivity" />

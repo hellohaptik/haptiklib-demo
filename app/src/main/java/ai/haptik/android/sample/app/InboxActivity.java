@@ -107,6 +107,8 @@ public class InboxActivity extends AppCompatActivity {
                     @Override
                     public void success(Boolean aBoolean) {
                         Toast.makeText(InboxActivity.this, getString(R.string.logout_success), Toast.LENGTH_SHORT).show();
+                        Utils.setHaptikInitialDataSyncDone(InboxActivity.this, false);
+                        finish();
                     }
 
                     @Override
@@ -114,8 +116,6 @@ public class InboxActivity extends AppCompatActivity {
                         Toast.makeText(InboxActivity.this, getString(R.string.logout_failure), Toast.LENGTH_SHORT).show();
                     }
                 });
-                Utils.setHaptikInitialDataSyncDone(this, false);
-                finish();
                 break;
             case R.id.action_saved_cards:
                 intent = new Intent(this, SavedCardActivity.class);
