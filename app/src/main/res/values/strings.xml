@@ -10,7 +10,6 @@
   <string name="unread_count">Unread Chats : %d</string>
   <string name="menu_logout">Logout</string>
   <string name="client_screen_message">This page imitates potential main screen of client app</string>
-  <string name="client_signup_screen_message">This page imitates potential signup screen of client app</string>
   <string name="launch_haptik">Launch Haptik Inbox</string>
   <string name="logout_success">Logout Success!</string>
   <string name="logout_failure">Logout failure!</string>
