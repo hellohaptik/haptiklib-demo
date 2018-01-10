@@ -7,6 +7,7 @@ buildscript {
             url 'https://maven.google.com/'
             name 'Google'
         }
+        google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.0'
@@ -22,6 +23,7 @@ allprojects {
             name 'Google'
         }
         // ADD MAVEN URL FOR Haptik, TIL & PhonePe SDK - Ask Haptik about it or look into Integration Document
+        google()
     }
 }
 

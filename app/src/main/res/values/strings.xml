@@ -13,5 +13,6 @@
   <string name="launch_haptik">Launch Haptik Inbox</string>
   <string name="logout_success">Logout Success!</string>
   <string name="logout_failure">Logout failure!</string>
-
+  <string name="launch_signup">Launch Signup</string>
+  <string name="signup_screen">Haptik SDK Signup</string>
 </resources>
