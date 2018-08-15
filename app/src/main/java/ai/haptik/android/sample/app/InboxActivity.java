@@ -142,10 +142,7 @@ public class InboxActivity extends AppCompatActivity {
             case R.id.action_delete_addresses:
                 deleteAllSavedAddresses();
                 break;
-            case R.id.action_toggle_banner_visibility:
-                boolean isBannerVisible = view_inbox.isBannerVisible();
-                view_inbox.setBannerVisibility(!isBannerVisible);
-                break;
+
             case R.id.action_haptik_offers:
                 Router.showAllOffers(this);
                 break;

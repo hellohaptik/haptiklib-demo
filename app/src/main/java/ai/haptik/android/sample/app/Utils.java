@@ -1,5 +1,6 @@
 package ai.haptik.android.sample.app;
 
+import ai.haptik.android.sdk.HaptikLib;
 import ai.haptik.android.sdk.InitData;
 import ai.haptik.android.sdk.cab.CabApiFactory;
 import ai.haptik.android.sdk.payment.PaymentApiFactory;
@@ -17,6 +18,8 @@ public class Utils {
     }
 
     public static InitData getHaptikInitData(Application application) {
+        //Comment the setRunEnvironement for while releasing it to production
+        HaptikLib.setRunEnvironment(HaptikLib.RUN_ENVIRONMENT_STAGING);
         return new InitData.Builder(application)
             .clientMainActivityClass(InboxActivity.class)
             .apiOptions(CabApiFactory.getCabApi()) // Optional - only needed if using cabs SDK

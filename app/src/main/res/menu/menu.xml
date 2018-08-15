@@ -40,10 +40,6 @@
       android:title="@string/menu_delete_addresses"
       tool:showAsAction="never" />
 
-  <item
-      android:id="@+id/action_toggle_banner_visibility"
-      android:title="@string/menu_toggle_banner_visibility"
-      tool:showAsAction="never" />
 
   <item
       android:id="@+id/action_logout"

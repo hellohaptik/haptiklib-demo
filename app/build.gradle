@@ -53,8 +53,9 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'ai.haptik.android.sdk:haptiklib-cab:3.4.0-34171'
-    compile 'ai.haptik.android.sdk:haptiklib-payment:3.4.0-34171'
+    compile 'ai.haptik.android.sdk:haptiklib-cab:4.2.1-42280'
+    compile 'ai.haptik.android.sdk:haptiklib-payment:4.2.1-42280'
+    compile 'phonepe.thinsdk.android.release:merchantsdk:0.3.2'
     compile "com.google.firebase:firebase-messaging:${google_play_services_client_library_version}"
     compile project(':PayWithAmazon')
 }

@@ -14,7 +14,8 @@
       android:label="@string/app_name"
       android:theme="@style/AppTheme"
       tools:replace="android:allowBackup">
-    <activity android:name=".ClientSignUpActivity" android:label="@string/signup_screen" />
+    <activity android:name=".ClientSignUpActivity"
+        android:label="@string/signup_screen" />
 
     <activity android:name=".ClientHomeActivity">
       <intent-filter>
@@ -44,10 +45,16 @@
         android:resource="@drawable/notification_small" />
     <meta-data android:name="ai.haptik.android.sdk.NotificationIconLarge"
         android:resource="@drawable/notification_small" />
+
+
+    <!-- IF YOU ARE USING CLEVERTAP ON STAGING MAKE SURE YOU ARE USING STAGING ACCOUNT ID
+    REPLACE THE ID WITH PROD ID WHEN RELEASE YOUR APP -->
     <meta-data android:name="CLEVERTAP_ACCOUNT_ID"
-        android:value="TEST-RK6-79Z-884Z" />
+        android:value="YOUR CLEVER TAP ACCOUNT ID" />
+    <!-- IF YOU ARE USING CLEVERTAP ON STAGING MAKE SURE YOU ARE USING STAGING ACCOUNT TOKEN
+    REPLACE THE TOKEN WITH PROD TOKEN WHEN RELEASE YOUR APP -->
     <meta-data android:name="CLEVERTAP_TOKEN"
-        android:value="TEST-1ca-632" />
+        android:value="YOUR CLEVER TAP TOKEN" />
 
     <activity android:name=".InboxActivity"
         android:parentActivityName=".ClientHomeActivity" />
@@ -75,12 +82,29 @@
 
 
     <meta-data android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyBC2yhIiop4x5drtrI4FwzDvHjnVWDlwgI" />
+        android:value="YOUR GOOGLE GEO API KEY" />
 
     <!-- Ask Haptik to provide ID -->
-    <meta-data
-        android:name="com.phonepe.android.sdk.AppId"
+    <meta-data android:name="com.phonepe.android.sdk.AppId"
         android:value="ID" />
+
+    <!-- Keep the `value` false for production version-->
+    <meta-data android:name="com.phonepe.android.sdk.Debuggable"
+        android:value="true" />
+
+
+    <!-- Needed for SSO -->
+    <!-- Please don't use string resources here as it will not work  -->
+    <provider android:name="com.login.nativesso.provider.TgidSaver"
+        android:authorities="androidcontentprovidersso.tg.YOUR_UNIQUE_IDENTIFIER"
+        android:exported="true" />
+
+    <meta-data android:name="ai.haptik.android.sdk.SsoProviderAuthority"
+        android:value="androidcontentprovidersso.tg.YOUR_UNIQUE_IDENTIFIER" />
+
+    <!--Truecaller Partner key for Demo app -->
+    <meta-data android:name="com.truecaller.android.sdk.PartnerKey"
+        android:value="@string/true_caller_partner_key" />
 
   </application>
 

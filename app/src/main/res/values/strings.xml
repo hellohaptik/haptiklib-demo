@@ -6,7 +6,6 @@
   <string name="show_transactions">Get Transactions</string>
   <string name="menu_add_address">Add an Address</string>
   <string name="menu_delete_addresses">Delete Addresses</string>
-  <string name="menu_toggle_banner_visibility">Toggle Banners display</string>
   <string name="unread_count">Unread Chats : %d</string>
   <string name="menu_logout">Logout</string>
   <string name="client_screen_message">This page imitates potential main screen of client app</string>
@@ -15,4 +14,5 @@
   <string name="logout_failure">Logout failure!</string>
   <string name="launch_signup">Launch Signup</string>
   <string name="signup_screen">Haptik SDK Signup</string>
+  <string name="true_caller_partner_key">YOUR TRUE CALLER PARTNER KEY</string>
 </resources>
