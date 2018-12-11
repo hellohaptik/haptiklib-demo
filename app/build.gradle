@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    buildToolsVersion '28.0.3'
 
     signingConfigs {
         debug {
@@ -53,9 +53,8 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'ai.haptik.android.sdk:haptiklib-cab:4.2.1-42280'
-    compile 'ai.haptik.android.sdk:haptiklib-payment:4.2.1-42280'
-    compile 'phonepe.thinsdk.android.release:merchantsdk:0.3.2'
+    compile 'ai.haptik.android.sdk:haptiklib-cab:4.5.1-45281'
+    compile 'ai.haptik.android.sdk:haptiklib-payment:4.5.1-45281'
     compile "com.google.firebase:firebase-messaging:${google_play_services_client_library_version}"
     compile project(':PayWithAmazon')
 }
