@@ -37,8 +37,6 @@
 
     <meta-data android:name="ai.haptik.android.sdk.ApiKey"
         android:resource="@string/haptik_sdk_api_key" />
-    <meta-data android:name="ai.haptik.android.sdk.BaseUrl"
-        android:resource="@string/haptik_sdk_base_url" />
     <meta-data android:name="ai.haptik.android.sdk.ClientId"
         android:resource="@string/haptik_sdk_client_id" />
     <meta-data android:name="ai.haptik.android.sdk.NotificationIconSmall"
@@ -84,12 +82,11 @@
     <meta-data android:name="com.google.android.geo.API_KEY"
         android:value="YOUR GOOGLE GEO API KEY" />
 
-    <!-- Ask Haptik to provide ID -->
-    <meta-data android:name="com.phonepe.android.sdk.AppId"
-        android:value="ID" />
-
-    <!-- Keep the `value` false for production version-->
+    <!-- Keep it true in testing environment to view the log statements-->
     <meta-data android:name="com.phonepe.android.sdk.Debuggable"
+        android:value="true" />
+    <!-- Keep it true in testing environment for PhonePe-->
+    <meta-data android:name="com.phonepe.android.sdk.isUAT"
         android:value="true" />
 
 

@@ -10,8 +10,8 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
-        classpath 'com.google.gms:google-services:3.1.0'
+        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.google.gms:google-services:4.1.0'
     }
 }
 
@@ -19,11 +19,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-
-        maven {
-            url 'https://maven.google.com/'
-            name 'Google'
-        }
         // ADD MAVEN URL FOR Haptik, TIL & PhonePe SDK - Ask Haptik about it or look into Integration Document
     }
 }

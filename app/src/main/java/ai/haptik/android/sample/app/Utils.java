@@ -21,11 +21,10 @@ public class Utils {
         //Comment the setRunEnvironement for while releasing it to production
         HaptikLib.setRunEnvironment(HaptikLib.RUN_ENVIRONMENT_STAGING);
         return new InitData.Builder(application)
-            .clientMainActivityClass(InboxActivity.class)
-            .apiOptions(CabApiFactory.getCabApi()) // Optional - only needed if using cabs SDK
-            .apiOptions(PaymentApiFactory.getPaymentApi()) // Optional - only needed if using payments SDK
+            .baseUrl("ADD_BASE_URL_HERE")
             .debugEnabled(BuildConfig.DEBUG)
             .notificationSound(R.raw.notification_sound) // Optional - only use if you want any non-default sound for haptik notification
+            .verifyUserService(new UserVerificationService()) //Add only if guest user verification is required
             .build();
     }
 }
