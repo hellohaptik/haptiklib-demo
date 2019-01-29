@@ -35,8 +35,6 @@
           android:resource="@xml/demo_provider_paths" />
     </provider>
 
-    <meta-data android:name="ai.haptik.android.sdk.ApiKey"
-        android:resource="@string/haptik_sdk_api_key" />
     <meta-data android:name="ai.haptik.android.sdk.ClientId"
         android:resource="@string/haptik_sdk_client_id" />
     <meta-data android:name="ai.haptik.android.sdk.NotificationIconSmall"
@@ -47,11 +45,11 @@
 
     <!-- IF YOU ARE USING CLEVERTAP ON STAGING MAKE SURE YOU ARE USING STAGING ACCOUNT ID
     REPLACE THE ID WITH PROD ID WHEN RELEASE YOUR APP -->
-    <meta-data android:name="CLEVERTAP_ACCOUNT_ID"
+    <meta-data android:name="HAPTIK_CLEVERTAP_ACCOUNT_ID"
         android:value="YOUR CLEVER TAP ACCOUNT ID" />
     <!-- IF YOU ARE USING CLEVERTAP ON STAGING MAKE SURE YOU ARE USING STAGING ACCOUNT TOKEN
     REPLACE THE TOKEN WITH PROD TOKEN WHEN RELEASE YOUR APP -->
-    <meta-data android:name="CLEVERTAP_TOKEN"
+    <meta-data android:name="HAPTIK_CLEVERTAP_TOKEN"
         android:value="YOUR CLEVER TAP TOKEN" />
 
     <activity android:name=".InboxActivity"
@@ -92,12 +90,12 @@
 
     <!-- Needed for SSO -->
     <!-- Please don't use string resources here as it will not work  -->
-    <provider android:name="com.login.nativesso.provider.TgidSaver"
-        android:authorities="androidcontentprovidersso.tg.YOUR_UNIQUE_IDENTIFIER"
-        android:exported="true" />
+    <!--<provider android:name="com.login.nativesso.provider.TgidSaver"-->
+        <!--android:authorities="androidcontentprovidersso.tg.YOUR_UNIQUE_IDENTIFIER"-->
+        <!--android:exported="true" />-->
 
-    <meta-data android:name="ai.haptik.android.sdk.SsoProviderAuthority"
-        android:value="androidcontentprovidersso.tg.YOUR_UNIQUE_IDENTIFIER" />
+    <!--<meta-data android:name="ai.haptik.android.sdk.SsoProviderAuthority"-->
+        <!--android:value="androidcontentprovidersso.tg.YOUR_UNIQUE_IDENTIFIER" />-->
 
     <!--Truecaller Partner key for Demo app -->
     <meta-data android:name="com.truecaller.android.sdk.PartnerKey"
