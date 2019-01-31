@@ -2,8 +2,6 @@ package ai.haptik.android.sample.app;
 
 import ai.haptik.android.sdk.HaptikLib;
 import ai.haptik.android.sdk.InitData;
-import ai.haptik.android.sdk.cab.CabApiFactory;
-import ai.haptik.android.sdk.payment.PaymentApiFactory;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;

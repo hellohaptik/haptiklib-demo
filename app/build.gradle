@@ -52,11 +52,13 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'ai.haptik.android.sdk:haptiklib-cab:4.5.1-45281'
-    compile 'ai.haptik.android.sdk:haptiklib-payment:4.5.1-45281'
-    compile "com.google.firebase:firebase-messaging:${google_play_services_client_library_version}"
-    compile project(':PayWithAmazon')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'ai.haptik.android.sdk:haptiklib-cab:5.0.0-50183'
+    implementation 'ai.haptik.android.sdk:haptiklib-payment:5.0.0-50183'
+    implementation 'ai.haptik.android.sdk:haptiklib-extensions:5.0.0-50183'
+    implementation "com.google.firebase:firebase-core:${firebase_core}"
+    implementation "com.google.firebase:firebase-messaging:${firebase_messaging}"
+    implementation project(':PayWithAmazon')
 }
 
 apply plugin: 'com.google.gms.google-services'

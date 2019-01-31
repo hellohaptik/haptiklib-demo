@@ -4,10 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-  <ai.haptik.android.sdk.inbox.InboxView
+  <ai.haptik.android.sdk.extensions.inbox.InboxView
       android:id="@+id/inbox"
       android:layout_width="match_parent"
       android:layout_height="match_parent">
 
-  </ai.haptik.android.sdk.inbox.InboxView>
+  </ai.haptik.android.sdk.extensions.inbox.InboxView>
 </LinearLayout>

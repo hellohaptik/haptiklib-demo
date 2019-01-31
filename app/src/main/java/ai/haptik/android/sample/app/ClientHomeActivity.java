@@ -1,7 +1,7 @@
 package ai.haptik.android.sample.app;
 
 import ai.haptik.android.sdk.HaptikLib;
-import ai.haptik.android.sdk.data.api.model.Task;
+import ai.haptik.android.sdk.data.local.models.TaskModel;
 import ai.haptik.android.sdk.messaging.MessagingClient;
 import ai.haptik.android.sdk.messaging.MessagingEventListener;
 import android.content.Intent;
@@ -40,7 +40,7 @@ public class ClientHomeActivity extends AppCompatActivity {
 
         MessagingClient.getInstance().setMessagingEventListener(new MessagingEventListener() {
             @Override
-            public void onTaskBoxItemClicked(Task task) {
+            public void onTaskBoxItemClicked(TaskModel task) {
                 Log.d(TAG, "Task Clicked --> " + task.getMessage());
             }
 
