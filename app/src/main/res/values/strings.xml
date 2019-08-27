@@ -1,11 +1,5 @@
 <resources>
   <string name="app_name">Haptik SDK Demo</string>
-  <string name="show_saved_cards">Show Saved Cards</string>
-  <string name="show_wallet">Show Wallet</string>
-  <string name="show_wallet_history">Wallet History</string>
-  <string name="show_transactions">Get Transactions</string>
-  <string name="menu_add_address">Add an Address</string>
-  <string name="menu_delete_addresses">Delete Addresses</string>
   <string name="unread_count">Unread Chats : %d</string>
   <string name="menu_logout">Logout</string>
   <string name="client_screen_message">This page imitates potential main screen of client app</string>
@@ -14,6 +8,7 @@
   <string name="logout_failure">Logout failure!</string>
   <string name="launch_signup">Launch Signup</string>
   <string name="signup_screen">Haptik SDK Signup</string>
-  <!--  <string name="haptik_sdk_client_id">YOUR CLIENT ID</string> -->
-  <string name="haptik_sdk_client_id">b751bbe0379c81ca61e8f2fd426a3b734d107470</string>
+  <string name="haptik_sdk_client_id">YOUR CLIENT ID</string>
+  <string name="haptik_share_text">ENTER YOUR SHARE TEXT HERE</string>
+  <string name="haptik_share_link">ENTER YOUR SHARE LINK HERE</string>
 </resources>

@@ -19,8 +19,8 @@ allprojects {
         maven {
             url "http://artifactory.hellohaptik.com:8081/artifactory/libs-release-local"
             credentials {
-                username 'rankguru'
-                password '<)s8(wC"rm)(WG.P8'
+                username 'ASK HAPTIK FOR USERNAME'
+                password 'ASK HAPTIK FOR PASSWORD'
             }
         }
     }
