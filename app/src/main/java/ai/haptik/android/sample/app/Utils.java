@@ -11,7 +11,7 @@ public class Utils {
         //Comment the setRunEnvironement for while releasing it to production
         HaptikLib.setRunEnvironment(HaptikLib.RUN_ENVIRONMENT_STAGING);
         return new InitData.Builder(application)
-            .baseUrl("https://staging.hellohaptik.com")
+            .baseUrl("ADD_BASE_URL_HERE")
             .debugEnabled(BuildConfig.DEBUG)
             .notificationSound(R.raw.notification_sound) // Optional - only use if you want any non-default sound for haptik notification
             .verifyUserService(new UserVerificationService()) //Add only if guest user verification is required
