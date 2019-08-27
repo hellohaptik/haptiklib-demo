@@ -1,1 +1,1 @@
-include ':app', ':PayWithAmazon'
+include ':app'
