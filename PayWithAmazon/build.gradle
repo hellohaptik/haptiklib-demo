@@ -1,2 +1,2 @@
 configurations.maybeCreate("default")
-artifacts.add("default", file('PayWithAmazon.aar'))
+artifacts.add("default", file('PayWithAmazon27-07-18.aar'))

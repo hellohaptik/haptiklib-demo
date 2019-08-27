@@ -50,10 +50,8 @@
 
     <!-- OR -->
 
-    <!-- IF YOU ARE USING CLEVERTAP ON STAGING MAKE SURE YOU ARE USING STAGING ACCOUNT ID
-    REPLACE THE ID WITH PROD ID WHEN RELEASE YOUR APP -->
-    <meta-data android:name="HAPTIK_CLEVERTAP_ACCOUNT_ID"
-        android:value="YOUR CLEVER TAP ACCOUNT ID" />
+    <activity android:name="ai.haptik.android.sdk.messaging.ChatActivity"
+        android:parentActivityName=".InboxActivity" />
 
 
     <!-- IF YOU ARE USING CLEVERTAP ON STAGING MAKE SURE YOU ARE USING STAGING ACCOUNT TOKEN
