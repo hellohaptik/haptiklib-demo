@@ -55,7 +55,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'ai.haptik.android.sdk:haptiklib-core:5.6.0-56183'
-    implementation 'ai.haptik.android.sdk:haptiklib-glide-helper:5.6.0-56183'
+    implementation 'ai.haptik.android.sdk:haptiklib-picasso-helper:5.6.0-56183'
     implementation "com.google.firebase:firebase-core:${firebase_core}"
     implementation "com.google.firebase:firebase-messaging:${firebase_messaging}"
 }

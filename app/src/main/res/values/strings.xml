@@ -14,5 +14,6 @@
   <string name="logout_failure">Logout failure!</string>
   <string name="launch_signup">Launch Signup</string>
   <string name="signup_screen">Haptik SDK Signup</string>
-  <string name="haptik_sdk_client_id">YOUR CLIENT ID</string>
+  <!--  <string name="haptik_sdk_client_id">YOUR CLIENT ID</string> -->
+  <string name="haptik_sdk_client_id">b751bbe0379c81ca61e8f2fd426a3b734d107470</string>
 </resources>

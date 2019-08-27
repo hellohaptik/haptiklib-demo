@@ -1,6 +1,8 @@
 package ai.haptik.android.sample.app;
 
 import ai.haptik.android.sdk.HaptikLib;
+import ai.haptik.android.sdk.Router;
+import ai.haptik.android.sdk.SignUpData;
 import ai.haptik.android.sdk.data.local.models.TaskModel;
 import ai.haptik.android.sdk.messaging.MessagingClient;
 import ai.haptik.android.sdk.messaging.MessagingEventListener;
@@ -30,20 +32,21 @@ public class ClientHomeActivity extends AppCompatActivity {
         button_launchHaptik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (HaptikLib.isUserLoggedIn()) {
-                    startActivity(new Intent(ClientHomeActivity.this, InboxActivity.class));
+                if (!HaptikLib.isInitialized()) {
+                    HaptikLib.init(Utils.getHaptikInitData(getApplication()));
+                }
+
+                if (!HaptikLib.isUserLoggedIn()) {
+                    SignUpData signUpData = new SignUpData.Builder(SignUpData.AUTH_TYPE_BASIC)
+                        .build();
+                    Router.signUpAndLaunchChannel(ClientHomeActivity.this, signUpData, "YOUR BUSINESS VIA NAME HERE", "HOMESCREEN");
                 } else {
-                    startActivity(new Intent(ClientHomeActivity.this, ClientSignUpActivity.class));
+                    Router.launchChannel(ClientHomeActivity.this, "YOUR BUSINESS VIA NAME HERE", "HOMESCREEN");
                 }
             }
         });
 
         MessagingClient.getInstance().setMessagingEventListener(new MessagingEventListener() {
-            @Override
-            public void onTaskBoxItemClicked(TaskModel task) {
-                Log.d(TAG, "Task Clicked --> " + task.getMessage());
-            }
-
             @Override
             public void onUnreadMessageCountChanged(int unreadMessageCount) {
                 Log.d(TAG, "Unread Message --> " + unreadMessageCount);
