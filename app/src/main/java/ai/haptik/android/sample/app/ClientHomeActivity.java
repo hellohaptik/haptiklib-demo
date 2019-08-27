@@ -1,6 +1,10 @@
 package ai.haptik.android.sample.app;
 
+import ai.haptik.android.sdk.Callback;
+import ai.haptik.android.sdk.HaptikException;
 import ai.haptik.android.sdk.HaptikLib;
+import ai.haptik.android.sdk.Router;
+import ai.haptik.android.sdk.SignUpData;
 import ai.haptik.android.sdk.data.local.models.TaskModel;
 import ai.haptik.android.sdk.messaging.MessagingClient;
 import ai.haptik.android.sdk.messaging.MessagingEventListener;
@@ -16,6 +20,7 @@ import android.widget.Button;
 public class ClientHomeActivity extends AppCompatActivity {
 
     private Button button_launchHaptik;
+    private Button button_logout;
     private MenuItem unreadMessageCountMenuItem;
     int totalUnreadMessages;
 
@@ -26,24 +31,45 @@ public class ClientHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_home);
         button_launchHaptik = findViewById(R.id.btn_launch_haptik);
-
+        button_logout = findViewById(R.id.btn_logout);
+        manageLogoutVisibility();
         button_launchHaptik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (HaptikLib.isUserLoggedIn()) {
-                    startActivity(new Intent(ClientHomeActivity.this, InboxActivity.class));
+                if (!HaptikLib.isInitialized()) {
+                    HaptikLib.init(Utils.getHaptikInitData(getApplication()));
+                }
+
+                if (!HaptikLib.isUserLoggedIn()) {
+                    SignUpData signUpData = new SignUpData.Builder(SignUpData.AUTH_TYPE_BASIC)
+                        .build();
+                    Router.signUpAndLaunchChannel(ClientHomeActivity.this, signUpData, "YOUR BUSINESS VIA NAME HERE", "HOMESCREEN");
                 } else {
-                    startActivity(new Intent(ClientHomeActivity.this, ClientSignUpActivity.class));
+                    Router.launchChannel(ClientHomeActivity.this, "YOUR BUSINESS VIA NAME HERE", "HOMESCREEN");
                 }
             }
         });
 
-        MessagingClient.getInstance().setMessagingEventListener(new MessagingEventListener() {
+        button_logout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onTaskBoxItemClicked(TaskModel task) {
-                Log.d(TAG, "Task Clicked --> " + task.getMessage());
-            }
+            public void onClick(View view) {
+                HaptikLib.logout(new Callback<Boolean>() {
+                    @Override
+                    public void success(Boolean aBoolean) {
+                        //Perform necessary actions here
+                        manageLogoutVisibility();
+                    }
 
+                    @Override
+                    public void failure(HaptikException e) {
+                        //Perform necessary actions here
+                        manageLogoutVisibility();
+                    }
+                });
+            }
+        });
+
+        MessagingClient.getInstance().setMessagingEventListener(new MessagingEventListener() {
             @Override
             public void onUnreadMessageCountChanged(int unreadMessageCount) {
                 Log.d(TAG, "Unread Message --> " + unreadMessageCount);
@@ -74,6 +100,14 @@ public class ClientHomeActivity extends AppCompatActivity {
     void updateUnreadMessageCount() {
         if (unreadMessageCountMenuItem != null) {
             unreadMessageCountMenuItem.setTitle(getString(R.string.unread_count, totalUnreadMessages));
+        }
+    }
+
+    void manageLogoutVisibility() {
+        if (HaptikLib.isUserLoggedIn()) {
+            button_logout.setVisibility(View.VISIBLE);
+        } else {
+            button_logout.setVisibility(View.GONE);
         }
     }
 }

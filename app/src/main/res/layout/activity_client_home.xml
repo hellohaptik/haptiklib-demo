@@ -24,8 +24,20 @@
       android:id="@+id/btn_launch_haptik"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginBottom="48dp"
+      android:layout_marginBottom="10dp"
+      app:layout_goneMarginBottom="@dimen/dp48"
       android:text="@string/launch_haptik"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintBottom_toTopOf="@+id/btn_logout"
+      app:layout_constraintRight_toRightOf="parent"
+      style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored" />
+
+  <Button
+      android:id="@+id/btn_logout"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="48dp"
+      android:text="@string/menu_logout"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintRight_toRightOf="parent"

@@ -47,18 +47,17 @@ android {
             force "com.google.android.gms:play-services-gcm:${google_play_services_client_library_version}"
             force "com.google.android.gms:play-services-places:${google_play_services_client_library_version}"
             force "com.google.android.gms:play-services-location:${google_play_services_client_library_version}"
+            force "com.google.android.gms:play-services-base:${playServicesBase}"
         }
     }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'ai.haptik.android.sdk:haptiklib-cab:5.0.0-50183'
-    implementation 'ai.haptik.android.sdk:haptiklib-payment:5.0.0-50183'
-    implementation 'ai.haptik.android.sdk:haptiklib-extensions:5.0.0-50183'
+    implementation 'ai.haptik.android.sdk:haptiklib-core:5.6.0-56183'
+    implementation 'ai.haptik.android.sdk:haptiklib-picasso-helper:5.6.0-56183'
     implementation "com.google.firebase:firebase-core:${firebase_core}"
     implementation "com.google.firebase:firebase-messaging:${firebase_messaging}"
-    implementation project(':PayWithAmazon')
 }
 
 apply plugin: 'com.google.gms.google-services'
