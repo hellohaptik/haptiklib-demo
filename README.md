@@ -11,3 +11,11 @@
   what kind of `AuthType` you're using, make necessary changes to the
   `SignUpData` object builder and provide correct values. Run the app,
   and check it out!
+  
+#### For configuring Notifications
+
+- Checkout the `MyFirebaseMessagingService.java` file, to see how to
+  enable notifications in Haptik SDK
+
+#### Read documentation for further details  
+- Visit the documentation at docs.haptik.ai  
