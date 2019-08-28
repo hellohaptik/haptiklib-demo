@@ -13,9 +13,8 @@
       android:icon="@mipmap/ic_demo_launcher"
       android:label="@string/app_name"
       android:theme="@style/AppTheme"
-      tools:replace="android:allowBackup">
-    <activity android:name=".ClientSignUpActivity"
-        android:label="@string/signup_screen" />
+      tools:replace="android:allowBackup"
+      tools:ignore="GoogleAppIndexingWarning">
 
     <activity android:name=".ClientHomeActivity">
       <intent-filter>
@@ -35,8 +34,6 @@
           android:resource="@xml/demo_provider_paths" />
     </provider>
 
-    <meta-data android:name="ai.haptik.android.sdk.ApiKey"
-        android:resource="@string/haptik_sdk_api_key" />
     <meta-data android:name="ai.haptik.android.sdk.ClientId"
         android:resource="@string/haptik_sdk_client_id" />
     <meta-data android:name="ai.haptik.android.sdk.NotificationIconSmall"
@@ -45,24 +42,24 @@
         android:resource="@drawable/notification_small" />
 
 
-    <!-- IF YOU ARE USING CLEVERTAP ON STAGING MAKE SURE YOU ARE USING STAGING ACCOUNT ID
-    REPLACE THE ID WITH PROD ID WHEN RELEASE YOUR APP -->
-    <meta-data android:name="CLEVERTAP_ACCOUNT_ID"
-        android:value="YOUR CLEVER TAP ACCOUNT ID" />
-    <!-- IF YOU ARE USING CLEVERTAP ON STAGING MAKE SURE YOU ARE USING STAGING ACCOUNT TOKEN
-    REPLACE THE TOKEN WITH PROD TOKEN WHEN RELEASE YOUR APP -->
-    <meta-data android:name="CLEVERTAP_TOKEN"
-        android:value="YOUR CLEVER TAP TOKEN" />
 
-    <activity android:name=".InboxActivity"
-        android:parentActivityName=".ClientHomeActivity" />
+    <!-- IF YOU ARE NOT USING CLEVERTAP PLEASE ENTER THE FOLLOWING META-DATA -->
+    <meta-data android:name="ai.haptik.android.sdk.EnableCleverTap"
+        android:value="false" />
+
+
+    <!-- OR -->
 
     <activity android:name="ai.haptik.android.sdk.messaging.ChatActivity"
         android:parentActivityName=".InboxActivity" />
 
-    <activity android:name=".SavedCardActivity"
-        android:label="Saved Cards"
-        android:parentActivityName=".InboxActivity" />
+
+    <!-- IF YOU ARE USING CLEVERTAP ON STAGING MAKE SURE YOU ARE USING STAGING ACCOUNT TOKEN
+    REPLACE THE TOKEN WITH PROD TOKEN WHEN RELEASE YOUR APP -->
+    <meta-data android:name="HAPTIK_CLEVERTAP_TOKEN"
+        android:value="YOUR CLEVER TAP TOKEN" />
+
+    <activity android:name="ai.haptik.android.sdk.messaging.ChatActivity" />
 
     <service android:name=".MyFirebaseMessagingService"
         android:exported="false">
@@ -71,37 +68,12 @@
       </intent-filter>
     </service>
 
-    <!-- Service To update tokens -->
-    <service android:name=".MyFirebaseInstanceIDService">
-      <intent-filter>
-        <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-      </intent-filter>
-    </service>
-
-
     <meta-data android:name="com.google.android.geo.API_KEY"
         android:value="YOUR GOOGLE GEO API KEY" />
 
-    <!-- Keep it true in testing environment to view the log statements-->
-    <meta-data android:name="com.phonepe.android.sdk.Debuggable"
-        android:value="true" />
-    <!-- Keep it true in testing environment for PhonePe-->
-    <meta-data android:name="com.phonepe.android.sdk.isUAT"
-        android:value="true" />
-
-
-    <!-- Needed for SSO -->
-    <!-- Please don't use string resources here as it will not work  -->
-    <provider android:name="com.login.nativesso.provider.TgidSaver"
-        android:authorities="androidcontentprovidersso.tg.YOUR_UNIQUE_IDENTIFIER"
-        android:exported="true" />
-
-    <meta-data android:name="ai.haptik.android.sdk.SsoProviderAuthority"
-        android:value="androidcontentprovidersso.tg.YOUR_UNIQUE_IDENTIFIER" />
-
-    <!--Truecaller Partner key for Demo app -->
-    <meta-data android:name="com.truecaller.android.sdk.PartnerKey"
-        android:value="@string/true_caller_partner_key" />
+    <!-- IF YOU DO NOT USE GOOGLE GEO KEY, ENTER ANY NON-EMPTY NON-NULL VALUE -->
+    <meta-data android:name="ai.haptik.places.sdk.api.key"
+        android:value="YOUR GOOGLE GEO API KEY" />
 
   </application>
 

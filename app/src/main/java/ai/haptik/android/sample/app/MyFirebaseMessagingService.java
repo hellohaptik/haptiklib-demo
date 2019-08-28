@@ -10,6 +10,12 @@ import java.util.Map;
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override
+    public void onNewToken(String refreshedToken) {
+        super.onNewToken(refreshedToken);
+        HaptikLib.setFcmDeviceToken(this, refreshedToken);
+    }
+
+    @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         final Map<String, String> data = remoteMessage.getData();
         if (HaptikNotificationManager.isHaptikNotification(data)) {
