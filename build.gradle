@@ -13,9 +13,6 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
-        jcenter()
-        // ADD MAVEN URL FOR Haptik, TIL & PhonePe SDK - Ask Haptik about it or look into Integration Document
         maven {
             url "http://artifactory.hellohaptik.com:8081/artifactory/libs-release-local"
             credentials {
@@ -23,6 +20,8 @@ allprojects {
                 password 'ASK HAPTIK FOR PASSWORD'
             }
         }
+        google()
+        jcenter()
     }
 }
 
