@@ -14,7 +14,6 @@ public class Utils {
             .baseUrl("ADD_BASE_URL_HERE")
             .debugEnabled(BuildConfig.DEBUG)
             .notificationSound(R.raw.notification_sound) // Optional - only use if you want any non-default sound for haptik notification
-            .verifyUserService(new UserVerificationService()) //Add only if guest user verification is required
             .imageLoadingService(PicassoApiFactory.getPicassoApi()) // This is mandatory, please refer Image Loading modules from docs.haptik.ai
             .build();
     }

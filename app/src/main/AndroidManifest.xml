@@ -26,7 +26,7 @@
 
     <!-- you DO NOT have to add this FileProvider in your app unless you already have it for your own usecase -->
     <!-- It's been added here for demo purpose to validate that there won't be any issue if client app also has this -->
-    <provider android:name="android.support.v4.content.FileProvider"
+    <provider android:name="androidx.core.content.FileProvider"
         android:authorities="ai.haptik.android.sample.app.fileprovider"
         android:exported="false"
         android:grantUriPermissions="true">
@@ -47,20 +47,6 @@
     <meta-data android:name="ai.haptik.android.sdk.EnableCleverTap"
         android:value="false" />
 
-
-    <!-- OR -->
-
-    <!-- IF YOU ARE USING CLEVERTAP ON STAGING MAKE SURE YOU ARE USING STAGING ACCOUNT ID
-    REPLACE THE ID WITH PROD ID WHEN RELEASE YOUR APP -->
-    <meta-data android:name="HAPTIK_CLEVERTAP_ACCOUNT_ID"
-        android:value="YOUR CLEVER TAP ACCOUNT ID" />
-
-
-    <!-- IF YOU ARE USING CLEVERTAP ON STAGING MAKE SURE YOU ARE USING STAGING ACCOUNT TOKEN
-    REPLACE THE TOKEN WITH PROD TOKEN WHEN RELEASE YOUR APP -->
-    <meta-data android:name="HAPTIK_CLEVERTAP_TOKEN"
-        android:value="YOUR CLEVER TAP TOKEN" />
-
     <activity android:name="ai.haptik.android.sdk.messaging.ChatActivity" />
 
     <service android:name=".MyFirebaseMessagingService"
@@ -69,13 +55,6 @@
         <action android:name="com.google.firebase.MESSAGING_EVENT" />
       </intent-filter>
     </service>
-
-    <meta-data android:name="com.google.android.geo.API_KEY"
-        android:value="YOUR GOOGLE GEO API KEY" />
-
-    <!-- IF YOU DO NOT USE GOOGLE GEO KEY, ENTER ANY NON-EMPTY NON-NULL VALUE -->
-    <meta-data android:name="ai.haptik.places.sdk.api.key"
-        android:value="YOUR GOOGLE GEO API KEY" />
 
   </application>
 
