@@ -1,20 +1,22 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
-        classpath 'com.google.gms:google-services:4.1.0'
+        classpath "com.android.tools.build:gradle:4.0.2"
+        classpath 'com.google.gms:google-services:4.3.4'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
     }
 }
 
 allprojects {
     repositories {
         maven {
-            url "http://artifactory.hellohaptik.com:8081/artifactory/libs-release-local"
+            url "https://artifactory.hellohaptik.com/artifactory/libs-release-local"
             credentials {
                 username 'ASK HAPTIK FOR USERNAME'
                 password 'ASK HAPTIK FOR PASSWORD'
